@@ -31,7 +31,8 @@ class SearchBar extends Component {
           placeholder="Get a five-day forecast in your favorite cities"
           className="form-control"
           value={this.state.term}
-          onChange={this.onInputChange} />
+          onChange={this.onInputChange}
+        />
         <span className="input-group-btn">
           <button type="submit" className="btn btn-secondary">Submit</button>
         </span>
@@ -39,6 +40,10 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  fetchWeather: React.PropTypes.func,
+};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchWeather }, dispatch);

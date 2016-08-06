@@ -3,10 +3,10 @@ import React from 'react';
 import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
 
 function average(data) {
-  return _.round(_.sum(data)/data.length);
+  return _.round(_.sum(data) / data.length);
 }
 
-export default (props) => {
+export default function Chart(props) {
   return (
     <div>
       <Sparklines height={120} width={180} data={props.data}>
@@ -17,3 +17,9 @@ export default (props) => {
     </div>
   );
 }
+
+Chart.propTypes = {
+  data: React.PropTypes.number,
+  units: React.PropTypes.string,
+  color: React.PropTypes.string,
+};

@@ -40,9 +40,13 @@ class WeatherList extends Component {
   }
 }
 
+WeatherList.propTypes = {
+  weather: React.PropTypes.array,
+};
+
 function mapStateToProps(state) {
   return {
-    weather: state.weather
+    weather: state.weather,
   };
 }
 
