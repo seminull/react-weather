@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import App from './components/app';
 import reducers from './reducers';
+
+injectTapEventPlugin();
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
