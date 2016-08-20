@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import Chart from '../components/chart';
 import GoogleMap from '../components/google_map';
 
 class WeatherList extends Component {
   renderWeather(cityData) {
+    console.log("CityData", cityData);
     const name = cityData.city.name;
     const temps = cityData.list.map((weather) => weather.main.temp);
     const pressures = cityData.list.map((weather) => weather.main.pressure);
@@ -23,19 +25,24 @@ class WeatherList extends Component {
 
   render() {
     return (
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th>City</th>
-            <th>Temperature (K)</th>
-            <th>Pressure (hPa)</th>
-            <th>Humidity (%)</th>
-          </tr>
-        </thead>
-        <tbody>
-          { this.props.weather.map(this.renderWeather) }
-        </tbody>
-      </table>
+      <Grid>
+
+            <table className="table table-hover weather-list" style={{ width: '100%' }}>
+              <thead>
+                <tr>
+                  <th>City</th>
+                  <th>Temperature (K)</th>
+                  <th>Pressure (hPa)</th>
+                  <th>Humidity (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                { this.props.weather.map(this.renderWeather) }
+              </tbody>
+            </table>
+
+      </Grid>
+
     );
   }
 }

@@ -19,7 +19,7 @@ export default function Chart(props) {
 }
 
 Chart.propTypes = {
-  data: React.PropTypes.number,
+  data: React.PropTypes.array,
   units: React.PropTypes.string,
   color: React.PropTypes.string,
 };

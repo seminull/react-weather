@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Button } from 'react-toolbox/lib/button';
+import { Input } from 'react-toolbox/lib/input';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 import { fetchWeather } from '../actions/index';
+
+const inline = {
+  display: 'inline-block',
+  margin: '1em',
+};
 
 class SearchBar extends Component {
   constructor(props) {
@@ -12,8 +21,8 @@ class SearchBar extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  onInputChange(event) {
-    this.setState({ term: event.target.value });
+  onInputChange(value) {
+    this.setState({ term: value });
   }
 
   onFormSubmit(event) {
@@ -26,16 +35,27 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit} className="input-group">
-        <input
-          placeholder="Get a five-day forecast in your favorite cities"
-          className="form-control"
-          value={this.state.term}
-          onChange={this.onInputChange}
-        />
-        <span className="input-group-btn">
-          <button type="submit" className="btn btn-secondary">Submit</button>
-        </span>
+      <form onSubmit={this.onFormSubmit}>
+        <Grid>
+          <Row>
+            <Col md={12} style={{textAlign: 'center'}}>
+              <div style={inline}>
+                <Input
+                  className="search-bar"
+                  label="City"
+                  value={this.state.term}
+                  onChange={this.onInputChange}
+                />
+              </div>
+              <div style={inline}>
+                <Button label="Submit" onClick={this.onFormSubmit} primary raised />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+
+          </Row>
+        </Grid>
       </form>
     );
   }
